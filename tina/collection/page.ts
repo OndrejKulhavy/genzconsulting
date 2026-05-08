@@ -5,6 +5,9 @@ import { testimonialBlockSchema } from '@/components/blocks/testimonial';
 import { featureBlockSchema } from '@/components/blocks/features';
 import { statsBlockSchema } from '@/components/blocks/stats';
 import { ctaBlockSchema } from '@/components/blocks/call-to-action';
+import { logoSliderBlockSchema } from '@/components/blocks/logo-slider';
+import { problemStatementBlockSchema } from '@/components/blocks/problem-statement';
+import { teamBlockSchema } from '@/components/blocks/team';
 
 const Page: Collection = {
   label: 'Pages',
@@ -35,6 +38,9 @@ const Page: Collection = {
         ctaBlockSchema,
         contentBlockSchema,
         testimonialBlockSchema,
+        logoSliderBlockSchema,
+        problemStatementBlockSchema,
+        teamBlockSchema,
       ],
     },
   ],
