@@ -27,20 +27,20 @@ export const Header = () => {
     <header>
       <nav
         data-state={menuState && 'active'}
-        className="bg-background/50 fixed z-20 w-full border-b backdrop-blur-3xl"
+        className="fixed z-20 w-full bg-black"
       >
         <div className="mx-auto max-w-6xl px-6 transition-all duration-300">
-          <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
+          <div className="relative flex flex-wrap items-center justify-between gap-6 py-4 lg:gap-0">
             <div className="flex w-full items-center justify-between gap-6">
               {/* Logo */}
               <Link href={`/${locale}`} aria-label="home" className="flex items-center gap-2">
-                <span className="text-lg font-bold tracking-tight">{header.name}</span>
+                <span className="text-lg font-black tracking-tight text-white">{header.name}</span>
               </Link>
 
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
+                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden text-white"
               >
                 <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
                 <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
@@ -53,7 +53,7 @@ export const Header = () => {
                     <li key={index}>
                       <Link
                         href={item!.href!.startsWith('#') ? item!.href! : `/${locale}${item!.href}`}
-                        className="text-muted-foreground hover:text-foreground block duration-150"
+                        className="font-medium text-white/70 hover:text-gtc-primary block duration-150"
                       >
                         {item!.label}
                       </Link>
@@ -64,27 +64,32 @@ export const Header = () => {
                 {/* Language switcher */}
                 <Link
                   href={switchLocale(otherLocale)}
-                  className="text-sm font-medium uppercase text-muted-foreground hover:text-foreground"
+                  className="text-sm font-bold uppercase text-white/50 hover:text-white"
                 >
                   {otherLocale}
                 </Link>
 
                 {/* Book call CTA */}
                 {calendlyUrl && (
-                  <CalendlyButton url={calendlyUrl} label={t('bookCall')} size="default" />
+                  <CalendlyButton
+                    url={calendlyUrl}
+                    label={t('bookCall')}
+                    size="default"
+                    className="rounded-none bg-gtc-primary text-black font-bold hover:bg-gtc-primary/90 px-6"
+                  />
                 )}
               </div>
             </div>
 
             {/* Mobile menu */}
-            <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none">
+            <div className="bg-black in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 border border-white/10 p-6 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:p-0">
               <div className="lg:hidden w-full">
                 <ul className="space-y-6 text-base">
                   {header.nav?.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item!.href!.startsWith('#') ? item!.href! : `/${locale}${item!.href}`}
-                        className="text-muted-foreground hover:text-foreground block duration-150"
+                        className="font-medium text-white/70 hover:text-gtc-primary block duration-150"
                         onClick={() => setMenuState(false)}
                       >
                         {item!.label}
@@ -93,11 +98,16 @@ export const Header = () => {
                   ))}
                 </ul>
                 <div className="mt-6 flex items-center gap-4">
-                  <Link href={switchLocale(otherLocale)} className="text-sm font-medium uppercase text-muted-foreground">
+                  <Link href={switchLocale(otherLocale)} className="text-sm font-bold uppercase text-white/50">
                     {otherLocale}
                   </Link>
                   {calendlyUrl && (
-                    <CalendlyButton url={calendlyUrl} label={t('bookCall')} size="default" />
+                    <CalendlyButton
+                      url={calendlyUrl}
+                      label={t('bookCall')}
+                      size="default"
+                      className="rounded-none bg-gtc-primary text-black font-bold hover:bg-gtc-primary/90"
+                    />
                   )}
                 </div>
               </div>
