@@ -11,7 +11,7 @@ export const CaseStudies = ({ data }: { data: any }) => {
       <div className="mx-auto max-w-6xl">
         {data.title && (
           <h2
-            className="mb-4 text-balance text-4xl font-bold lg:text-5xl"
+            className="mb-4 text-balance text-4xl font-black lg:text-5xl"
             data-tina-field={tinaField(data, 'title')}
           >
             {data.title}
@@ -29,7 +29,7 @@ export const CaseStudies = ({ data }: { data: any }) => {
           {data.items?.map((item: any, i: number) => (
             <div
               key={i}
-              className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
+              className="flex flex-col gap-4 rounded-none border-l-4 border-l-gtc-primary border-t border-r border-b border-border bg-card p-6"
               data-tina-field={tinaField(item)}
             >
               <div className="flex items-center gap-3 min-h-[2rem]">
