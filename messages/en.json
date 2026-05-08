@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "bookCall": "Book a call",
+    "services": "Services",
+    "team": "Team",
+    "contact": "Contact"
+  },
+  "hero": {
+    "primaryCta": "Book a consultation",
+    "secondaryCta": "Download Legit Check"
+  },
+  "leadMagnet": {
+    "title": "Get the Legit Check for free",
+    "description": "Enter your email and we'll send you a guide on what a truly effective employer brand for Gen Z looks like.",
+    "emailPlaceholder": "you@company.com",
+    "submit": "Send me the guide",
+    "submitting": "Sending...",
+    "successTitle": "Done! The guide is on its way.",
+    "successDescription": "Check your inbox.",
+    "downloadButton": "Download PDF",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorInvalidEmail": "Please enter a valid email address."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

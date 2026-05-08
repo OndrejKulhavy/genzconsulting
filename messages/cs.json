@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "bookCall": "Booknout call",
+    "services": "Služby",
+    "team": "Tým",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "primaryCta": "Booknout konzultaci",
+    "secondaryCta": "Stáhnout Legit Check"
+  },
+  "leadMagnet": {
+    "title": "Získejte Legit Check zdarma",
+    "description": "Zadejte svůj e-mail a my vám pošleme průvodce, jak vypadá skutečně funkční employer brand pro Gen Z.",
+    "emailPlaceholder": "vas@email.cz",
+    "submit": "Chci průvodce",
+    "submitting": "Posíláme...",
+    "successTitle": "Hotovo! Průvodce je na cestě.",
+    "successDescription": "Zkontrolujte svůj e-mail.",
+    "downloadButton": "Stáhnout PDF",
+    "errorGeneric": "Něco se pokazilo. Zkuste to prosím znovu.",
+    "errorInvalidEmail": "Zadejte platnou e-mailovou adresu."
+  },
+  "footer": {
+    "rights": "Všechna práva vyhrazena."
+  }
+}
