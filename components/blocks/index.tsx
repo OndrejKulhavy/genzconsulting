@@ -11,6 +11,7 @@ import { CallToAction } from "./call-to-action";
 import { LogoSlider } from "./logo-slider";
 import { ProblemStatement } from "./problem-statement";
 import { Team } from "./team";
+import { CaseStudies } from "./case-studies";
 
 export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
   if (!props.blocks) return null;
@@ -51,6 +52,8 @@ const Block = (block: PageBlocks) => {
       return <ProblemStatement data={block} />;
     case "PageBlocksTeam":
       return <Team data={block} />;
+    case "PageBlocksCaseStudies":
+      return <CaseStudies data={block} />;
     default:
       return null;
   }

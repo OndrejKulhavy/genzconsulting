@@ -8,6 +8,7 @@ import { ctaBlockSchema } from '@/components/blocks/call-to-action';
 import { logoSliderBlockSchema } from '@/components/blocks/logo-slider';
 import { problemStatementBlockSchema } from '@/components/blocks/problem-statement';
 import { teamBlockSchema } from '@/components/blocks/team';
+import { caseStudiesBlockSchema } from '@/components/blocks/case-studies';
 
 const Page: Collection = {
   label: 'Pages',
@@ -41,6 +42,7 @@ const Page: Collection = {
         logoSliderBlockSchema,
         problemStatementBlockSchema,
         teamBlockSchema,
+        caseStudiesBlockSchema,
       ],
     },
   ],

@@ -66,6 +66,23 @@ export const Team = ({ data }: { data: any }) => {
           ))}
         </div>
 
+        {/* Action photos */}
+        {data.photos?.length > 0 && (
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {data.photos.map((photo: any, i: number) => (
+              <div key={i} className="overflow-hidden rounded-2xl" data-tina-field={tinaField(photo, 'src')}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt ?? ''}
+                  width={800}
+                  height={450}
+                  className="aspect-video w-full object-cover grayscale transition-all duration-300 hover:grayscale-0"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Mentors */}
         {mentors.length > 0 && (
           <div className="mt-16">
@@ -115,6 +132,20 @@ export const teamBlockSchema: Template = {
       label: 'Description',
       name: 'description',
       ui: { component: 'textarea' },
+    },
+    {
+      type: 'object',
+      label: 'Action Photos',
+      name: 'photos',
+      list: true,
+      ui: {
+        itemProps: (item) => ({ label: item?.alt || 'Photo' }),
+        defaultItem: { alt: '' },
+      },
+      fields: [
+        { type: 'image', label: 'Photo', name: 'src' },
+        { type: 'string', label: 'Alt text', name: 'alt' },
+      ],
     },
     {
       type: 'object',

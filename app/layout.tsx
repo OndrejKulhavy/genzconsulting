@@ -14,8 +14,34 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'GenZ Consulting',
-  description: 'Pomáháme firmám komunikovat s generací Z.',
+  title: {
+    default: 'GenZ Consulting — Specialisté na generaci Z',
+    template: '%s | GenZ Consulting',
+  },
+  description:
+    'Pomáháme středním a velkým firmám komunikovat, přitahovat a udržet generaci Z. Workshopy, training programy a onboardingová aplikace na míru.',
+  keywords: [
+    'generace Z',
+    'Gen Z',
+    'HR konzultace',
+    'onboarding',
+    'workshop',
+    'mladé talenty',
+    'trainee program',
+    'GenZ Consulting',
+  ],
+  openGraph: {
+    title: 'GenZ Consulting — Specialisté na generaci Z',
+    description:
+      'Pomáháme středním a velkým firmám komunikovat, přitahovat a udržet generaci Z.',
+    siteName: 'GenZ Consulting',
+    locale: 'cs_CZ',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
