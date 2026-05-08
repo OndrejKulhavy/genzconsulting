@@ -22,7 +22,7 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
         return (
           <div key={i} data-tina-field={tinaField(block)}>
             <Block {...block} />
-            {block.__typename === "PageBlocksHero" && <Marquee />}
+            {block?.__typename === "PageBlocksHero" && <Marquee />}
           </div>
         );
       })}
