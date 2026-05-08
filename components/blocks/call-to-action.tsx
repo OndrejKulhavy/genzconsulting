@@ -21,7 +21,7 @@ export const CallToAction = ({ data }: { data: PageBlocksCta }) => {
   return (
     <Section id="contact" background={data.background ?? 'bg-gtc-deep'}>
       <div className="text-center">
-        <h2 className="text-balance text-4xl font-bold text-white lg:text-5xl" data-tina-field={tinaField(data, 'title')}>
+        <h2 className="text-balance text-5xl font-black text-white lg:text-6xl" data-tina-field={tinaField(data, 'title')}>
           {data.title}
         </h2>
         <p className="mt-4 text-white/70" data-tina-field={tinaField(data, 'description')}>
@@ -32,14 +32,14 @@ export const CallToAction = ({ data }: { data: PageBlocksCta }) => {
             if (action!.type === 'calendly') {
               return (
                 <div key={action!.label} data-tina-field={tinaField(action)}>
-                  <CalendlyButton url={calendlyUrl} label={action!.label!} className="rounded-full bg-white text-gtc-deep hover:bg-white/90 px-8" />
+                  <CalendlyButton url={calendlyUrl} label={action!.label!} className="rounded-none bg-gtc-primary text-black font-bold hover:bg-gtc-primary/90 px-8 h-12" />
                 </div>
               );
             }
             if (action!.type === 'leadMagnet') {
               return (
                 <div key={action!.label} data-tina-field={tinaField(action)}>
-                  <Button size="lg" variant="ghost" className="rounded-full border border-white/40 px-8 text-base text-white hover:bg-white/10 hover:text-white" onClick={() => setModalOpen(true)}>
+                  <Button size="lg" variant="ghost" className="rounded-none border-2 border-white px-8 text-base font-bold text-white hover:bg-white hover:text-gtc-deep h-12" onClick={() => setModalOpen(true)}>
                     {action!.label}
                   </Button>
                 </div>
