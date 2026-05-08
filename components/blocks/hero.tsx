@@ -1,3 +1,4 @@
+// components/blocks/hero.tsx
 'use client';
 import { iconSchema } from '@/tina/fields/icon';
 import Image from 'next/image';
@@ -5,131 +6,123 @@ import Link from 'next/link';
 import * as React from 'react';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import { PageBlocksHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
+import type { PageBlocksHero, PageBlocksHeroImage } from '../../tina/__generated__/types';
 import { Icon } from '../icon';
 import { Section, sectionBlockSchemaField } from '../layout/section';
 import { AnimatedGroup } from '../motion-primitives/animated-group';
 import { TextEffect } from '../motion-primitives/text-effect';
 import { Button } from '../ui/button';
+import { CalendlyButton } from '../ui/CalendlyButton';
+import { LeadMagnetModal } from '../ui/LeadMagnetModal';
 import HeroVideoDialog from '../ui/hero-video-dialog';
-import { Transition } from 'motion/react';
+import type { Transition } from 'motion/react';
+import { useLayout } from '../layout/layout-context';
+
 const transitionVariants = {
   container: {
-    visible: {
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.75,
-      },
-    },
+    visible: { transition: { staggerChildren: 0.05, delayChildren: 0.75 } },
   },
   item: {
-    hidden: {
-      opacity: 0,
-      filter: 'blur(12px)',
-      y: 12,
-    },
+    hidden: { opacity: 0, filter: 'blur(12px)', y: 12 },
     visible: {
       opacity: 1,
       filter: 'blur(0px)',
       y: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.3,
-        duration: 1.5,
-      } as Transition,
+      transition: { type: 'spring', bounce: 0.3, duration: 1.5 } as Transition,
     },
   },
 };
 
 export const Hero = ({ data }: { data: PageBlocksHero }) => {
-  // Extract the background style logic into a more readable format
-  let gradientStyle: React.CSSProperties | undefined = undefined;
-  if (data.background) {
-    const colorName = data.background
-      .replace(/\/\d{1,2}$/, '')
-      .split('-')
-      .slice(1)
-      .join('-');
-    const opacity = data.background.match(/\/(\d{1,3})$/)?.[1] || '100';
-
-    gradientStyle = {
-      '--tw-gradient-to': `color-mix(in oklab, var(--color-${colorName}) ${opacity}%, transparent)`,
-    } as React.CSSProperties;
-  }
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const { globalSettings } = useLayout();
+  const calendlyUrl = (globalSettings?.header as any)?.calendlyUrl ?? '';
 
   return (
     <Section background={data.background!}>
-      <div className='text-center sm:mx-auto lg:mr-auto lg:mt-0'>
+      <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
         {data.headline && (
           <div data-tina-field={tinaField(data, 'headline')}>
-            <TextEffect preset='fade-in-blur' speedSegment={0.3} as='h1' className='mt-8 text-balance text-6xl md:text-7xl xl:text-[5.25rem]'>
+            <TextEffect preset="fade-in-blur" speedSegment={0.3} as="h1" className="mt-8 text-balance text-6xl md:text-7xl xl:text-[5.25rem]">
               {data.headline!}
             </TextEffect>
           </div>
         )}
         {data.tagline && (
           <div data-tina-field={tinaField(data, 'tagline')}>
-            <TextEffect per='line' preset='fade-in-blur' speedSegment={0.3} delay={0.5} as='p' className='mx-auto mt-8 max-w-2xl text-balance text-lg'>
+            <TextEffect per="line" preset="fade-in-blur" speedSegment={0.3} delay={0.5} as="p" className="mx-auto mt-8 max-w-2xl text-balance text-lg">
               {data.tagline!}
             </TextEffect>
           </div>
         )}
 
-        <AnimatedGroup variants={transitionVariants} className='mt-12 flex flex-col items-center justify-center gap-2 md:flex-row'>
-          {data.actions &&
-            data.actions.map((action) => (
-              <div key={action!.label} data-tina-field={tinaField(action)} className='bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5'>
-                <Button asChild size='lg' variant={action!.type === 'link' ? 'ghost' : 'default'} className='rounded-xl px-5 text-base'>
+        <AnimatedGroup variants={transitionVariants} className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
+          {data.actions?.map((action) => {
+            if (action!.type === 'calendly') {
+              return (
+                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
+                  <CalendlyButton url={calendlyUrl} label={action!.label!} />
+                </div>
+              );
+            }
+            if (action!.type === 'leadMagnet') {
+              return (
+                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
+                  <Button size="lg" variant="ghost" className="rounded-xl px-5 text-base" onClick={() => setModalOpen(true)}>
+                    {action!.label}
+                  </Button>
+                </div>
+              );
+            }
+            return (
+              <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
+                <Button asChild size="lg" variant={action!.type === 'link' ? 'ghost' : 'default'} className="rounded-xl px-5 text-base">
                   <Link href={action!.link!}>
                     {action?.icon && <Icon data={action?.icon} />}
-                    <span className='text-nowrap'>{action!.label}</span>
+                    <span className="text-nowrap">{action!.label}</span>
                   </Link>
                 </Button>
               </div>
-            ))}
+            );
+          })}
         </AnimatedGroup>
       </div>
 
       {data.image && (
         <AnimatedGroup variants={transitionVariants}>
-          <div className='relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20 max-w-full' data-tina-field={tinaField(data, 'image')}>
-            <div aria-hidden className='bg-linear-to-b absolute inset-0 z-10 from-transparent from-35% pointer-events-none' style={gradientStyle} />
-            <div className='inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1'>
+          <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20 max-w-full" data-tina-field={tinaField(data, 'image')}>
+            <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
               <ImageBlock image={data.image} />
             </div>
           </div>
         </AnimatedGroup>
       )}
+
+      <LeadMagnetModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </Section>
   );
 };
 
 const ImageBlock = ({ image }: { image: PageBlocksHeroImage }) => {
   if (image.videoUrl) {
-    let videoId = '';
-    if (image.videoUrl) {
-      const embedPrefix = '/embed/';
-      const idx = image.videoUrl.indexOf(embedPrefix);
-      if (idx !== -1) {
-        videoId = image.videoUrl.substring(idx + embedPrefix.length).split('?')[0];
-      }
-    }
-    const thumbnailSrc = image.src ? image.src! : videoId ? `https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg` : '';
-
-    return <HeroVideoDialog videoSrc={image.videoUrl} thumbnailSrc={thumbnailSrc} thumbnailAlt='Hero Video' />;
+    const embedPrefix = '/embed/';
+    const idx = image.videoUrl.indexOf(embedPrefix);
+    const videoId = idx !== -1 ? image.videoUrl.substring(idx + embedPrefix.length).split('?')[0] : '';
+    const thumbnailSrc = image.src ?? (videoId ? `https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg` : '');
+    return <HeroVideoDialog videoSrc={image.videoUrl} thumbnailSrc={thumbnailSrc} thumbnailAlt="Hero Video" />;
   }
-
   if (image.src) {
     return (
       <Image
-        className='z-2 border-border/25 aspect-15/8 relative rounded-2xl border max-w-full h-auto'
-        alt={image!.alt || ''}
-        src={image!.src!}
+        className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border max-w-full h-auto"
+        alt={image.alt || ''}
+        src={image.src}
         height={4000}
         width={3000}
       />
     );
   }
+  return null;
 };
 
 export const heroBlockSchema: Template = {
@@ -138,47 +131,25 @@ export const heroBlockSchema: Template = {
   ui: {
     previewSrc: '/blocks/hero.png',
     defaultItem: {
-      tagline: "Here's some text above the other text",
-      headline: 'This Big Text is Totally Awesome',
-      text: 'Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.',
+      headline: 'Generace Z není komplikovaná.',
+      tagline: 'Pomáháme firmám komunikovat s generací, která vyrostla online.',
     },
   },
   fields: [
     sectionBlockSchemaField as any,
-    {
-      type: 'string',
-      label: 'Headline',
-      name: 'headline',
-    },
-    {
-      type: 'string',
-      label: 'Tagline',
-      name: 'tagline',
-    },
+    { type: 'string', label: 'Headline', name: 'headline' },
+    { type: 'string', label: 'Tagline', name: 'tagline' },
     {
       label: 'Actions',
       name: 'actions',
       type: 'object',
       list: true,
       ui: {
-        defaultItem: {
-          label: 'Action Label',
-          type: 'button',
-          icon: {
-              name: "Tina",
-              color: "white",
-              style: "float",
-          },
-          link: '/',
-        },
+        defaultItem: { label: 'Booknout call', type: 'calendly' },
         itemProps: (item) => ({ label: item.label }),
       },
       fields: [
-        {
-          label: 'Label',
-          name: 'label',
-          type: 'string',
-        },
+        { label: 'Label', name: 'label', type: 'string' },
         {
           label: 'Type',
           name: 'type',
@@ -186,14 +157,12 @@ export const heroBlockSchema: Template = {
           options: [
             { label: 'Button', value: 'button' },
             { label: 'Link', value: 'link' },
+            { label: 'Calendly Popup', value: 'calendly' },
+            { label: 'Lead Magnet (PDF)', value: 'leadMagnet' },
           ],
         },
         iconSchema as any,
-        {
-          label: 'Link',
-          name: 'link',
-          type: 'string',
-        },
+        { label: 'Link', name: 'link', type: 'string' },
       ],
     },
     {
@@ -201,22 +170,9 @@ export const heroBlockSchema: Template = {
       label: 'Image',
       name: 'image',
       fields: [
-        {
-          name: 'src',
-          label: 'Image Source',
-          type: 'image',
-        },
-        {
-          name: 'alt',
-          label: 'Alt Text',
-          type: 'string',
-        },
-        {
-          name: 'videoUrl',
-          label: 'Video URL',
-          type: 'string',
-          description: 'If using a YouTube video, make sure to use the embed version of the video URL',
-        },
+        { name: 'src', label: 'Image Source', type: 'image' },
+        { name: 'alt', label: 'Alt Text', type: 'string' },
+        { name: 'videoUrl', label: 'Video URL', type: 'string' },
       ],
     },
   ],
