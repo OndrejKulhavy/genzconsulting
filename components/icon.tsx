@@ -83,6 +83,7 @@ const iconSizeClass = {
 //@ts-ignore
 export const Icon = ({ data, parentColor = '', className = '', tinaField = '' }) => {
   const { theme } = useLayout();
+  const themeColor = theme?.color ?? 'teal';
 
   //@ts-ignore
   if (IconOptions[data.name] === null || IconOptions[data.name] === undefined) {
@@ -97,7 +98,7 @@ export const Icon = ({ data, parentColor = '', className = '', tinaField = '' })
   //@ts-ignore
   const iconSizeClasses = typeof size === 'string' ? iconSizeClass[size] : iconSizeClass[Object.keys(iconSizeClass)[size]];
 
-  const iconColor = color ? (color === 'primary' ? theme!.color : color) : theme!.color;
+  const iconColor = color ? (color === 'primary' ? themeColor : color) : themeColor;
 
   if (style == 'circle') {
     return (
@@ -110,7 +111,7 @@ export const Icon = ({ data, parentColor = '', className = '', tinaField = '' })
     );
   } else {
     const iconColorClasses =
-      iconColorClass[parentColor === 'primary' && (iconColor === theme!.color || iconColor === 'primary') ? 'white' : iconColor!].regular;
+      iconColorClass[parentColor === 'primary' && (iconColor === themeColor || iconColor === 'primary') ? 'white' : iconColor!].regular;
     return (
       <IconSVG
         {...(tinaField ? { 'data-tina-field': tinaField } : {})} // only render data-tina-field if it exists
