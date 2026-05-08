@@ -21,25 +21,25 @@ export const CallToAction = ({ data }: { data: PageBlocksCta }) => {
   return (
     <Section id="contact" background={data.background ?? 'bg-gtc-deep'}>
       <div className="text-center">
-        <h2 className="text-balance text-4xl font-black tracking-tight text-black lg:text-5xl" data-tina-field={tinaField(data, 'title')}>
+        <h2 className="text-balance text-4xl font-bold text-white lg:text-5xl" data-tina-field={tinaField(data, 'title')}>
           {data.title}
         </h2>
-        <p className="mt-4 text-black/70" data-tina-field={tinaField(data, 'description')}>
+        <p className="mt-4 text-white/70" data-tina-field={tinaField(data, 'description')}>
           {data.description}
         </p>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
           {data.actions?.map((action) => {
             if (action!.type === 'calendly') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
-                  <CalendlyButton url={calendlyUrl} label={action!.label!} />
+                <div key={action!.label} data-tina-field={tinaField(action)}>
+                  <CalendlyButton url={calendlyUrl} label={action!.label!} className="rounded-full bg-white text-gtc-deep hover:bg-white/90 px-8" />
                 </div>
               );
             }
             if (action!.type === 'leadMagnet') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
-                  <Button size="lg" variant="ghost" className="rounded-xl px-5 text-base text-black" onClick={() => setModalOpen(true)}>
+                <div key={action!.label} data-tina-field={tinaField(action)}>
+                  <Button size="lg" variant="ghost" className="rounded-full border border-white/40 px-8 text-base text-white hover:bg-white/10 hover:text-white" onClick={() => setModalOpen(true)}>
                     {action!.label}
                   </Button>
                 </div>

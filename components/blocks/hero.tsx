@@ -43,7 +43,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
       <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
         {data.headline && (
           <div data-tina-field={tinaField(data, 'headline')}>
-            <TextEffect preset="fade-in-blur" speedSegment={0.3} as="h1" className="mt-8 text-balance text-6xl font-black tracking-tight md:text-7xl xl:text-[5.5rem]">
+            <TextEffect preset="fade-in-blur" speedSegment={0.3} as="h1" className="mt-8 text-balance text-6xl font-bold md:text-7xl xl:text-[5.25rem]">
               {data.headline!}
             </TextEffect>
           </div>
@@ -60,23 +60,23 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           {data.actions?.map((action) => {
             if (action!.type === 'calendly') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
+                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
                   <CalendlyButton url={calendlyUrl} label={action!.label!} />
                 </div>
               );
             }
             if (action!.type === 'leadMagnet') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
-                  <Button size="lg" variant="ghost" className="rounded-xl px-5 text-base" onClick={() => setModalOpen(true)}>
+                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
+                  <Button size="lg" variant="ghost" className="rounded-full px-6 text-base" onClick={() => setModalOpen(true)}>
                     {action!.label}
                   </Button>
                 </div>
               );
             }
             return (
-              <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
-                <Button asChild size="lg" variant={action!.type === 'link' ? 'ghost' : 'default'} className="rounded-xl px-5 text-base">
+              <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
+                <Button asChild size="lg" variant={action!.type === 'link' ? 'ghost' : 'default'} className="rounded-full px-6 text-base">
                   <Link href={action!.link!}>
                     {action?.icon && <Icon data={action?.icon} />}
                     <span className="text-nowrap">{action!.label}</span>
