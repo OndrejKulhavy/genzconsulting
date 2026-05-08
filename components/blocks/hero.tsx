@@ -43,7 +43,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
       <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
         {data.headline && (
           <div data-tina-field={tinaField(data, 'headline')}>
-            <TextEffect preset="fade-in-blur" speedSegment={0.3} as="h1" className="mt-8 text-balance text-6xl font-bold md:text-7xl xl:text-[5.25rem]">
+            <TextEffect preset="fade-in-blur" speedSegment={0.3} as="h1" className="mt-8 text-balance text-6xl font-black leading-none md:text-8xl xl:text-[7.5rem]">
               {data.headline!}
             </TextEffect>
           </div>
@@ -60,23 +60,28 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           {data.actions?.map((action) => {
             if (action!.type === 'calendly') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
-                  <CalendlyButton url={calendlyUrl} label={action!.label!} />
+                <div key={action!.label} data-tina-field={tinaField(action)}>
+                  <CalendlyButton
+                    url={calendlyUrl}
+                    label={action!.label!}
+                    size="lg"
+                    className="rounded-none bg-black text-white font-bold hover:bg-black/80 px-8 h-12"
+                  />
                 </div>
               );
             }
             if (action!.type === 'leadMagnet') {
               return (
-                <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
-                  <Button size="lg" variant="ghost" className="rounded-full px-6 text-base" onClick={() => setModalOpen(true)}>
+                <div key={action!.label} data-tina-field={tinaField(action)}>
+                  <Button size="lg" variant="outline" className="rounded-none border-2 border-black bg-transparent text-black font-bold hover:bg-black hover:text-white px-8 h-12" onClick={() => setModalOpen(true)}>
                     {action!.label}
                   </Button>
                 </div>
               );
             }
             return (
-              <div key={action!.label} data-tina-field={tinaField(action)} className="bg-foreground/10 rounded-full border p-0.5">
-                <Button asChild size="lg" variant={action!.type === 'link' ? 'ghost' : 'default'} className="rounded-full px-6 text-base">
+              <div key={action!.label} data-tina-field={tinaField(action)}>
+                <Button asChild size="lg" variant="default" className="rounded-none bg-black text-white font-bold hover:bg-black/80 px-8 h-12">
                   <Link href={action!.link!}>
                     {action?.icon && <Icon data={action?.icon} />}
                     <span className="text-nowrap">{action!.label}</span>
