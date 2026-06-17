@@ -110,6 +110,9 @@
     "member1Name": "Adam Dalecký",
     "member1Role": "Co-founder & Lead Consultant",
     "member1Bio": "Adam works with companies on their Gen Z hiring and onboarding processes. He has personally gone through dozens of interviews and knows this generation from the inside.",
+    "member2Name": "Jonatan Petr",
+    "member2Role": "Co-founder",
+    "member2Bio": "Part of GenZ Consulting from the start. An inside view of the generation, paired with a feel for how companies actually work.",
     "ctaTitle": "Ready to start?",
     "ctaDesc": "Book a no-obligation call or download our free guide.",
     "ctaPrimary": "Book a call",
@@ -218,6 +221,9 @@
     "member1Name": "Adam Dalecký",
     "member1Role": "Co-founder & Lead Consultant",
     "member1Bio": "Adam works with companies on their Gen Z hiring and onboarding processes. He has personally gone through dozens of interviews and knows this generation from the inside.",
+    "member2Name": "Jonatan Petr",
+    "member2Role": "Co-founder",
+    "member2Bio": "Part of GenZ Consulting from the start. An inside view of the generation, paired with a feel for how companies actually work.",
     "ctaTitle": "Want to learn more?",
     "ctaDesc": "Book a no-obligation call.",
     "cta": "Book a call"
@@ -239,11 +245,10 @@
     "cs3Desc": "Analysis of career page and hiring process focused on how job offers are communicated to Gen Z.",
     "cs3Result": "Key barriers in recruitment identified and specific communication adjustments proposed.",
     "resultLabel": "Result",
-    "viewPdf": "View",
-    "downloadPdf": "Download",
     "ctaTitle": "Want similar results?",
     "ctaDesc": "Book a no-obligation call and we'll find out how we can help your company.",
-    "cta": "Book a call"
+    "cta": "Book a call",
+    "readMore": "Read case study"
   },
   "contact": {
     "eyebrow": "Contact",
@@ -263,5 +268,19 @@
     "faq3A": "It depends on the service — from a one-off workshop to a 6-month trainee program build. We always propose a scope that makes sense for your situation.",
     "faq4Q": "Do you work with companies outside Prague?",
     "faq4A": "Yes, we work with companies throughout the Czech Republic. Workshops and meetings can be done in-person or online."
+  },
+  "caseStudyDetail": {
+    "back": "Back to case studies",
+    "caseLabel": "Case study",
+    "clientLabel": "Client",
+    "sectionContext": "Context & challenge",
+    "sectionApproach": "Our approach",
+    "sectionFindings": "Key findings",
+    "sectionOutputs": "Outputs & impact",
+    "sectionWhy": "Why GenZ Consulting",
+    "contactLabel": "Contact",
+    "ctaTitle": "Want similar results?",
+    "ctaDesc": "Book a no-obligation call and we'll find out how we can help your company.",
+    "cta": "Book a call"
   }
 }

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'motion/react';
-import { ArrowRight, Check, Quote } from 'lucide-react';
+import { ArrowRight, ArrowDown, Check, Quote, Linkedin } from 'lucide-react';
 import { CalendlyButton } from '@/components/ui/CalendlyButton';
 import { LeadMagnetModal } from '@/components/ui/LeadMagnetModal';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
@@ -65,82 +65,140 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative min-h-[90vh] bg-gtc-primary flex flex-col justify-center overflow-hidden">
-        <div className="mx-auto w-full max-w-6xl px-6 py-24">
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-            className="mb-6 text-xs font-bold uppercase tracking-[0.25em] text-black/50"
-          >
-            {t('heroEyebrow')}
-          </motion.p>
+      <section className="relative overflow-hidden bg-white">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 py-20 lg:min-h-[90vh] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-24">
+          {/* ── LEFT: text ── */}
+          <div className="order-2 lg:order-1">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0}
+              className="mb-8 flex items-center gap-3"
+            >
+              <span aria-hidden className="h-px w-10 bg-black/40" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-black/50">
+                {t('heroEyebrow')}
+              </span>
+            </motion.div>
 
-          <div className="overflow-hidden">
             <motion.h1
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={0.1}
-              className="text-5xl font-black leading-[1.05] tracking-tight text-black sm:text-6xl md:text-7xl lg:text-8xl"
+              className="text-5xl font-black leading-[1.04] tracking-tight text-black sm:text-6xl md:text-7xl"
             >
-              {t('heroHeadline1')}
-              <br />
-              {t('heroHeadline2')}
+              {t('heroHeadline1')}{' '}
+              {(() => {
+                const h2 = t('heroHeadline2');
+                const m = h2.match(/^(.*?)([.!?]*)$/);
+                const word = m?.[1] ?? h2;
+                const trail = m?.[2] ?? '';
+                return (
+                  <>
+                    <span className="relative inline-block whitespace-nowrap">
+                      <span
+                        aria-hidden
+                        className="absolute -inset-x-3 -inset-y-1 -z-0 rounded-[0.55em] bg-gtc-primary"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute -bottom-2 left-7 -z-0 h-5 w-5 rotate-45 bg-gtc-primary"
+                      />
+                      <span className="relative z-10">{word}</span>
+                    </span>
+                    {trail}
+                  </>
+                );
+              })()}
             </motion.h1>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0.2}
+              className="mt-8 text-2xl font-bold text-black/70 md:text-3xl"
+            >
+              {t('heroSubline')}
+            </motion.p>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0.3}
+              className="mt-5 max-w-xl text-base text-black/60 md:text-lg"
+            >
+              {t('heroBody')}
+            </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0.4}
+              className="mt-10 flex flex-wrap gap-3"
+            >
+              {calendlyUrl && (
+                <CalendlyButton
+                  url={calendlyUrl}
+                  label={t('heroPrimaryCta')}
+                  size="lg"
+                  className="rounded-full bg-black px-8 py-4 text-sm font-bold text-white hover:bg-black/80 transition-colors"
+                />
+              )}
+              <button
+                onClick={() => setLeadOpen(true)}
+                className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-transparent px-8 py-4 text-sm font-bold text-black hover:bg-black hover:text-white transition-colors"
+              >
+                {t('heroSecondaryCta')}
+                <ArrowDown className="size-4" />
+              </button>
+            </motion.div>
           </div>
 
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.2}
-            className="mt-6 text-2xl font-bold text-black/70 md:text-3xl"
-          >
-            {t('heroSubline')}
-          </motion.p>
-
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0.3}
-            className="mt-5 max-w-xl text-base text-black/60 md:text-lg"
-          >
-            {t('heroBody')}
-          </motion.p>
-
+          {/* ── RIGHT: team photo in a Gen-Z sticker frame (bottom intentionally cropped) ── */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            custom={0.4}
-            className="mt-10 flex flex-wrap gap-3"
+            custom={0.25}
+            className="relative order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-md"
           >
-            {calendlyUrl && (
-              <CalendlyButton
-                url={calendlyUrl}
-                label={t('heroPrimaryCta')}
-                size="lg"
-                className="rounded-none bg-black px-8 py-4 text-sm font-bold text-white hover:bg-black/80 transition-colors"
-              />
-            )}
-            <button
-              onClick={() => setLeadOpen(true)}
-              className="rounded-none border-2 border-black bg-transparent px-8 py-4 text-sm font-bold text-black hover:bg-black/10 transition-colors"
-            >
-              {t('heroSecondaryCta')}
-            </button>
-          </motion.div>
-        </div>
+            {/* offset teal sticker panel behind */}
+            <div
+              aria-hidden
+              className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2.75rem] bg-gtc-primary"
+            />
 
-        {/* decorative large text */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 select-none text-[20vw] font-black leading-none text-black/5"
-        >
-          GZ
+            {/* framed photo — object-top + square ratio crops the lower legs cleanly */}
+            <div className="relative aspect-square overflow-hidden rounded-[2.75rem] border-[3px] border-black bg-gradient-to-b from-gtc-primary/25 to-gtc-primary/60">
+              <Image
+                src="/team_no_bg.png"
+                alt="Tým GenZ Consulting"
+                fill
+                priority
+                sizes="(max-width: 1024px) 90vw, 40vw"
+                className="object-cover object-top"
+              />
+              {/* soft fade at the bottom edge to blend the crop */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gtc-primary/70 to-transparent"
+              />
+            </div>
+
+            {/* rotated Gen-Z badge */}
+            <div className="absolute -left-3 -top-3 z-20 flex size-20 rotate-[-12deg] items-center justify-center rounded-full border-[3px] border-black bg-white sm:-left-4 sm:-top-4 sm:size-24">
+              <span className="text-center text-[11px] font-black uppercase leading-tight tracking-tight text-black sm:text-xs">
+                100%
+                <br />
+                Gen&nbsp;Z
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -457,50 +515,81 @@ export default function HomePage() {
       {/* ── TEAM ── */}
       <section className="bg-white py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-12 md:grid-cols-2 md:items-center">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gtc-dark">
-                {t('teamEyebrow')}
-              </p>
-              <h2 className="text-3xl font-black leading-tight text-black md:text-4xl">
-                {t('teamTitle')}
-              </h2>
-              <div className="mt-8 border-l-2 border-gtc-primary pl-6">
-                <p className="text-xl font-black text-black">{t('member1Name')}</p>
-                <p className="mt-0.5 text-sm font-semibold text-gtc-dark">{t('member1Role')}</p>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-500">{t('member1Bio')}</p>
-              </div>
-              <Link
-                href={`/${locale}/about`}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-zinc-400 hover:text-black transition-colors duration-150"
-              >
-                {t('teamViewAbout')}
-              </Link>
-            </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-2xl"
+          >
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gtc-dark">
+              {t('teamEyebrow')}
+            </p>
+            <h2 className="text-3xl font-black leading-tight text-black md:text-4xl">
+              {t('teamTitle')}
+            </h2>
+          </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0.1}
-              className="relative aspect-[4/5] overflow-hidden bg-zinc-100"
-            >
-              <Image
-                src="/adam.jpeg"
-                alt="Adam Dalecký — GenZ Consulting"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gtc-primary/10 mix-blend-multiply" />
-            </motion.div>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2">
+            {[
+              {
+                name: t('member1Name'),
+                role: t('member1Role'),
+                bio: t('member1Bio'),
+                img: '/adam.jpeg',
+                linkedin: 'https://www.linkedin.com/in/adam-dalecky/',
+              },
+              {
+                name: t('member2Name'),
+                role: t('member2Role'),
+                bio: t('member2Bio'),
+                img: '/jonathan.jpeg',
+                linkedin: 'https://www.linkedin.com/in/jonatan-petr/',
+              },
+            ].map((m, i) => (
+              <motion.div
+                key={m.name}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i * 0.1}
+                className="group flex gap-6 border border-zinc-200 p-6 transition-colors duration-200 hover:border-gtc-primary"
+              >
+                <div className="relative h-36 w-28 shrink-0 overflow-hidden bg-zinc-100">
+                  <Image
+                    src={m.img}
+                    alt={`${m.name} — GenZ Consulting`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="112px"
+                  />
+                  <div className="absolute inset-0 bg-gtc-primary/10 mix-blend-multiply" />
+                </div>
+                <div className="flex flex-col">
+                  <p className="text-xl font-black text-black">{m.name}</p>
+                  <p className="mt-0.5 text-sm font-semibold text-gtc-dark">{m.role}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-500">{m.bio}</p>
+                  <a
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-bold text-zinc-400 transition-colors duration-150 hover:text-gtc-dark"
+                  >
+                    <Linkedin className="size-3.5" />
+                    LinkedIn
+                  </a>
+                </div>
+              </motion.div>
+            ))}
           </div>
+
+          <Link
+            href={`/${locale}/about`}
+            className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold text-zinc-400 hover:text-black transition-colors duration-150"
+          >
+            {t('teamViewAbout')}
+          </Link>
         </div>
       </section>
 

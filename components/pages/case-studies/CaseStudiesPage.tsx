@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
-import { Download, ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { CalendlyButton } from '@/components/ui/CalendlyButton';
 import { useLayout } from '@/components/layout/layout-context';
 
@@ -25,8 +26,7 @@ const CASE_STUDIES = [
     resultKey: 'cs1Result' as const,
     logo: '/AV-MEDIA-SYSTEMS_horizontalni_1200_1200-970x970.png',
     logoAlt: 'AV Media Systems',
-    pdf: '/AV Media x GenZ Consulting - Case study.pdf',
-    pdfName: 'AV-Media-x-GenZ-Consulting-Case-study.pdf',
+    slug: 'av-media',
   },
   {
     clientKey: 'cs2Client' as const,
@@ -35,8 +35,7 @@ const CASE_STUDIES = [
     resultKey: 'cs2Result' as const,
     logo: '/globalpayments.jpeg',
     logoAlt: 'Global Payments',
-    pdf: '/Global payments x GenZ Consulting - Case study.pdf',
-    pdfName: 'Global-Payments-x-GenZ-Consulting-Case-study.pdf',
+    slug: 'global-payments',
   },
   {
     clientKey: 'cs3Client' as const,
@@ -45,13 +44,13 @@ const CASE_STUDIES = [
     resultKey: 'cs3Result' as const,
     logo: '/logo-orizzontale.2020-07-16-17-41-47.jpeg',
     logoAlt: 'Generali',
-    pdf: '/Generali x GenZ Consulting - Case study.pdf',
-    pdfName: 'Generali-x-GenZ-Consulting-Case-study.pdf',
+    slug: 'generali',
   },
 ];
 
 export default function CaseStudiesPage() {
   const t = useTranslations('caseStudies');
+  const locale = useLocale();
   const { globalSettings } = useLayout();
   const calendlyUrl = (globalSettings?.header as any)?.calendlyUrl ?? '';
 
@@ -100,7 +99,7 @@ export default function CaseStudiesPage() {
       <section className="bg-white py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-8 md:grid-cols-3">
-            {CASE_STUDIES.map(({ clientKey, serviceKey, descKey, resultKey, logo, logoAlt, pdf, pdfName }, i) => (
+            {CASE_STUDIES.map(({ clientKey, serviceKey, descKey, resultKey, logo, logoAlt, slug }, i) => (
               <motion.article
                 key={clientKey}
                 variants={fadeUp}
@@ -140,27 +139,14 @@ export default function CaseStudiesPage() {
                   </p>
                 </div>
 
-                {/* PDF actions */}
-                <div className="mt-auto flex gap-0 border-t border-zinc-100">
-                  <a
-                    href={pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-1.5 py-3.5 text-xs font-bold uppercase tracking-[0.1em] text-zinc-500 hover:bg-zinc-50 hover:text-black transition-colors duration-150"
-                  >
-                    <ExternalLink className="size-3.5" />
-                    {t('viewPdf')}
-                  </a>
-                  <div className="w-px bg-zinc-100" />
-                  <a
-                    href={pdf}
-                    download={pdfName}
-                    className="flex flex-1 items-center justify-center gap-1.5 py-3.5 text-xs font-bold uppercase tracking-[0.1em] text-zinc-500 hover:bg-zinc-50 hover:text-black transition-colors duration-150"
-                  >
-                    <Download className="size-3.5" />
-                    {t('downloadPdf')}
-                  </a>
-                </div>
+                {/* Read case study */}
+                <Link
+                  href={`/${locale}/case-studies/${slug}`}
+                  className="mt-auto flex items-center justify-center gap-1.5 border-t border-zinc-100 py-4 text-xs font-bold uppercase tracking-[0.1em] text-zinc-600 transition-colors duration-150 group-hover:bg-gtc-primary group-hover:text-black hover:bg-gtc-primary hover:text-black"
+                >
+                  {t('readMore')}
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
               </motion.article>
             ))}
           </div>

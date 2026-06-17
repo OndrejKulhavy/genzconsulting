@@ -22,6 +22,11 @@
         "icon": { "name": "FaLinkedin" },
         "url": "https://www.linkedin.com/in/adam-dalecky/",
         "label": "Adam Dalecký LinkedIn"
+      },
+      {
+        "icon": { "name": "FaLinkedin" },
+        "url": "https://www.linkedin.com/in/jonatan-petr/",
+        "label": "Jonatan Petr LinkedIn"
       }
     ]
   }
