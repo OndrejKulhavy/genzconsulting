@@ -153,7 +153,7 @@ export default function AboutPage() {
                 custom={i * 0.1}
                 className="group relative bg-white p-8 hover:bg-zinc-50 transition-colors duration-200"
               >
-                <span className="text-5xl font-black text-zinc-100 select-none leading-none">
+                <span className="text-5xl font-black text-gtc-primary select-none leading-none">
                   {num}
                 </span>
                 <h3 className="mt-4 text-lg font-black text-black">{t(titleKey)}</h3>
