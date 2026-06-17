@@ -316,12 +316,17 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-14 border-b border-zinc-200 pb-10"
           >
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-gtc-dark">
-              {t('servicesEyebrow')}
-            </p>
-            <h2 className="text-3xl font-black text-black md:text-4xl">{t('servicesTitle')}</h2>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-12 bg-gtc-primary" />
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gtc-dark">
+                {t('servicesEyebrow')}
+              </p>
+            </div>
+            <h2 className="mt-6 text-4xl font-black leading-tight text-black md:text-5xl">
+              {t('servicesTitle')}
+            </h2>
           </motion.div>
 
           <div className="grid gap-px bg-zinc-200 sm:grid-cols-2">
@@ -335,7 +340,7 @@ export default function HomePage() {
                 custom={i * 0.08}
                 className="group relative bg-white p-8 hover:bg-zinc-50 transition-colors duration-200"
               >
-                <span className="text-4xl font-black text-zinc-100 select-none">{num}</span>
+                <span className="text-4xl font-black text-gtc-primary select-none">{num}</span>
                 <h3 className="mt-3 text-lg font-black text-black">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-500">{desc}</p>
                 <Link
