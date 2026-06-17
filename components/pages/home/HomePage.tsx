@@ -618,14 +618,14 @@ export default function HomePage() {
                 name: t('member1Name'),
                 role: t('member1Role'),
                 bio: t('member1Bio'),
-                img: '/adam.jpeg',
+                img: '/adam_no_bg.png',
                 linkedin: 'https://www.linkedin.com/in/adam-dalecky/',
               },
               {
                 name: t('member2Name'),
                 role: t('member2Role'),
                 bio: t('member2Bio'),
-                img: '/jonathan.jpeg',
+                img: '/jonatan_no_bg.png',
                 linkedin: 'https://www.linkedin.com/in/jonatan-petr/',
               },
             ].map((m, i) => (
@@ -638,12 +638,12 @@ export default function HomePage() {
                 custom={i * 0.1}
                 className="group flex gap-6 border border-zinc-200 p-6 transition-colors duration-200 hover:border-gtc-primary"
               >
-                <div className="relative h-36 w-28 shrink-0 overflow-hidden bg-zinc-100">
+                <div className="relative h-40 w-28 shrink-0 overflow-hidden bg-zinc-100">
                   <Image
                     src={m.img}
                     alt={`${m.name} — GenZ Consulting`}
                     fill
-                    className="object-cover object-top"
+                    className="object-contain object-bottom"
                     sizes="112px"
                   />
                   <div className="absolute inset-0 bg-gtc-primary/10 mix-blend-multiply" />
