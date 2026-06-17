@@ -179,8 +179,16 @@ export default function HomePage() {
               className="pointer-events-none absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(16,185,129,0.18),transparent_45%)] blur-3xl opacity-80"
             />
 
+            {/* larger blurred vertical label outside the photo */}
+            <div className="pointer-events-none absolute right-[-2.5rem] top-1/2 z-10 hidden h-48 -translate-y-1/2 items-center justify-center md:flex">
+              <span className="absolute inset-0 mx-auto h-40 w-14 rounded-full bg-gtc-primary/20 blur-xl" />
+              <span className="relative text-[1.5rem] font-black uppercase tracking-[0.55em] text-gtc-primary [writing-mode:vertical-rl] [text-orientation:upright] rotate-180 sm:text-[1.75rem] lg:text-[2rem]">
+                GZC
+              </span>
+            </div>
+
             {/* framed photo — object-top + square ratio crops the lower legs cleanly */}
-            <div className="relative aspect-square overflow-hidden rounded-[2.75rem] border-[3px] border-black bg-gradient-to-b from-gtc-primary/25 to-gtc-primary/60">
+            <div className="relative aspect-square overflow-hidden rounded-[2.75rem] border-[3px] border-black bg-gradient-to-b from-gtc-primary/20 via-gtc-primary/10 to-white shadow-[0_0_0_1px_rgba(16,185,129,0.12)]">
               <Image
                 src="/team_no_bg.png"
                 alt="Tým GenZ Consulting"
@@ -188,11 +196,6 @@ export default function HomePage() {
                 priority
                 sizes="(max-width: 1024px) 90vw, 40vw"
                 className="object-cover object-top"
-              />
-              {/* soft fade at the bottom edge to blend the crop */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gtc-primary/70 to-transparent"
               />
             </div>
           </motion.div>
@@ -225,15 +228,16 @@ export default function HomePage() {
           <div className="overflow-hidden">
             <InfiniteSlider gap={64} speed={40} speedOnHover={20}>
               {LOGOS.map(({ name, src }) => (
-                <div key={name} className="flex h-10 items-center">
+                <div key={name} className="flex h-16 w-40 min-w-[10rem] items-center justify-center overflow-hidden rounded-3xl bg-white/90 shadow-sm">
                   {src ? (
-                    <Image
-                      src={src}
-                      alt={name}
-                      width={120}
-                      height={40}
-                      className="h-8 w-auto object-contain grayscale opacity-50 hover:opacity-80 hover:grayscale-0 transition-all duration-300"
-                    />
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={src}
+                        alt={name}
+                        fill
+                        className="absolute inset-0 h-full w-full object-cover object-center scale-[1.12] grayscale opacity-70 transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                      />
+                    </div>
                   ) : (
                     <span className="text-sm font-bold uppercase tracking-widest text-zinc-300">{name}</span>
                   )}
