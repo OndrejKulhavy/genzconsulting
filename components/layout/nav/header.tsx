@@ -52,6 +52,7 @@ export const Header = () => {
     setMobileServicesOpen(false);
   }, [pathname]);
 
+  const homeLink = { href: `/${locale}`, label: t('homePageLink') };
   const navLinks = [
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/case-studies`, label: t('caseStudies') },
@@ -76,6 +77,16 @@ export const Header = () => {
 
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-8 lg:flex">
+            <Link
+              href={homeLink.href}
+              className={cn(
+                'text-sm font-medium transition-colors duration-150',
+                pathname === homeLink.href ? 'text-gtc-primary' : 'text-white/70 hover:text-white'
+              )}
+            >
+              {homeLink.label}
+            </Link>
+
             {/* Services dropdown */}
             <div ref={dropdownRef} className="relative">
               <button
@@ -177,6 +188,13 @@ export const Header = () => {
 
           {/* Nav items */}
           <nav className="flex flex-1 flex-col overflow-y-auto px-6 pb-10 pt-4">
+            <Link
+              href={homeLink.href}
+              onClick={() => setMenuOpen(false)}
+              className="block border-b border-white/10 py-5 text-lg font-bold text-white hover:text-gtc-primary transition-colors"
+            >
+              {homeLink.label}
+            </Link>
             {/* Services accordion */}
             <button
               onClick={() => setMobileServicesOpen((v) => !v)}
