@@ -225,26 +225,26 @@ export default function HomePage() {
           >
             {t('logosEyebrow')}
           </motion.p>
-          <div className="overflow-hidden">
-            <InfiniteSlider gap={64} speed={40} speedOnHover={20}>
-              {LOGOS.map(({ name, src }) => (
-                <div key={name} className="flex h-16 w-40 min-w-[10rem] items-center justify-center overflow-hidden rounded-3xl border border-white bg-white/90">
-                  {src ? (
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={src}
-                        alt={name}
-                        fill
-                        className="absolute inset-0 h-full w-full object-cover object-center scale-[1.12] grayscale opacity-70 transition-all duration-300 hover:opacity-100 hover:grayscale-0"
-                      />
-                    </div>
-                  ) : (
-                    <span className="text-sm font-bold uppercase tracking-widest text-zinc-300">{name}</span>
-                  )}
-                </div>
-              ))}
-            </InfiniteSlider>
-          </div>
+        </div>
+        <div className="overflow-hidden w-full px-6">
+          <InfiniteSlider gap={64} speed={40} speedOnHover={20} className="w-full">
+            {LOGOS.map(({ name, src }) => (
+              <div key={name} className="flex h-16 w-52 min-w-[12rem] items-center justify-center overflow-hidden rounded-3xl border border-white bg-white/90">
+                {src ? (
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={src}
+                      alt={name}
+                      fill
+                      className="absolute inset-0 h-full w-full object-cover object-center scale-[1.12] grayscale opacity-70 transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                    />
+                  </div>
+                ) : (
+                  <span className="text-sm font-bold uppercase tracking-widest text-zinc-300">{name}</span>
+                )}
+              </div>
+            ))}
+          </InfiniteSlider>
         </div>
       </section>
 
