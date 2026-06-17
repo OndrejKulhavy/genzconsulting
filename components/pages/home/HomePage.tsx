@@ -228,7 +228,7 @@ export default function HomePage() {
           <div className="overflow-hidden">
             <InfiniteSlider gap={64} speed={40} speedOnHover={20}>
               {LOGOS.map(({ name, src }) => (
-                <div key={name} className="flex h-16 w-40 min-w-[10rem] items-center justify-center overflow-hidden rounded-3xl bg-white/90 shadow-sm">
+                <div key={name} className="flex h-16 w-40 min-w-[10rem] items-center justify-center overflow-hidden rounded-3xl border border-white bg-white/90">
                   {src ? (
                     <div className="relative h-full w-full">
                       <Image
