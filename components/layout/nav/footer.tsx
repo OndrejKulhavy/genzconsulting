@@ -6,6 +6,23 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Phone, Mail, Linkedin } from 'lucide-react';
 import { useLayout } from '../layout-context';
 
+// Derive a readable display name from a LinkedIn URL (the Tina query doesn't expose a label).
+const SOCIAL_NAME_OVERRIDES: Record<string, string> = {
+  'gen-zconsulting': 'GenZ Consulting',
+  'adam-dalecky': 'Adam Dalecký',
+  'jonatan-petr': 'Jonatan Petr',
+};
+
+function socialLinkName(url: string): string {
+  const slug = url.match(/\/(?:company|in)\/([^/?#]+)/i)?.[1]?.toLowerCase();
+  if (!slug) return 'LinkedIn';
+  if (SOCIAL_NAME_OVERRIDES[slug]) return SOCIAL_NAME_OVERRIDES[slug];
+  return slug
+    .split('-')
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join(' ');
+}
+
 export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings!;
@@ -83,19 +100,24 @@ export const Footer = () => {
                   {(footer as any).phone}
                 </a>
               )}
-              <div className="flex gap-3 pt-1">
-                {footer?.social?.map((link, i) => (
-                  <a
-                    key={i}
-                    href={link!.url!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={(link as any).label ?? 'LinkedIn'}
-                    className="flex items-center gap-1.5 text-sm text-white/60 hover:text-gtc-primary transition-colors duration-150"
-                  >
-                    <Linkedin className="size-4" />
-                  </a>
-                ))}
+              <div className="flex flex-col gap-2 pt-1">
+                {footer?.social?.map((link, i) => {
+                  const url = link!.url ?? '';
+                  const name = socialLinkName(url);
+                  return (
+                    <a
+                      key={i}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${name} LinkedIn`}
+                      className="flex items-center gap-2 text-sm text-white/60 hover:text-gtc-primary transition-colors duration-150"
+                    >
+                      <Linkedin className="size-4 shrink-0" />
+                      {name}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -105,7 +127,7 @@ export const Footer = () => {
           <p className="text-xs text-white/30">
             © {new Date().getFullYear()} {header?.name}. {t('rights')}
           </p>
-          <p className="text-xs text-white/20">linkedin.com/in/adam-dalecky</p>
+          <p className="text-xs text-white/20">linkedin.com/company/gen-zconsulting</p>
         </div>
       </div>
     </footer>

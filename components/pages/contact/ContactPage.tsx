@@ -155,6 +155,15 @@ export default function ContactPage() {
                       <Linkedin className="size-4 text-gtc-dark shrink-0" />
                       Adam Dalecký
                     </a>
+                    <a
+                      href="https://www.linkedin.com/in/jonatan-petr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-black hover:text-gtc-dark transition-colors duration-150"
+                    >
+                      <Linkedin className="size-4 text-gtc-dark shrink-0" />
+                      Jonatan Petr
+                    </a>
                   </div>
                 </li>
               </ul>

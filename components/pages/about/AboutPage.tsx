@@ -252,11 +252,9 @@ export default function AboutPage() {
                 />
               </div>
               <div>
-                <p className="text-lg font-black text-white">Jonatan Petr</p>
-                <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-gtc-primary">Co-founder</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/50">
-                  Součást GenZ Consulting od začátku. Pohled zevnitř generace, která ví jak firmy fungují.
-                </p>
+                <p className="text-lg font-black text-white">{t('member2Name')}</p>
+                <p className="mt-0.5 text-xs font-semibold uppercase tracking-wider text-gtc-primary">{t('member2Role')}</p>
+                <p className="mt-2 text-sm leading-relaxed text-white/50">{t('member2Bio')}</p>
                 <a
                   href="https://www.linkedin.com/in/jonatan-petr/"
                   target="_blank"

@@ -110,6 +110,9 @@
     "member1Name": "Adam Dalecký",
     "member1Role": "Co-founder & Lead Consultant",
     "member1Bio": "Adam se věnuje práci s firmami na jejich hiring a onboarding procesech pro Gen Z. Osobně prošel desítkami pohovorů a zná tuto generaci zevnitř.",
+    "member2Name": "Jonatan Petr",
+    "member2Role": "Co-founder",
+    "member2Bio": "Součást GenZ Consulting od začátku. Pohled zevnitř generace spojený s citem pro to, jak firmy reálně fungují.",
     "ctaTitle": "Připraveni začít?",
     "ctaDesc": "Rezervujte si nezávazný call nebo si stáhněte náš průvodce zdarma.",
     "ctaPrimary": "Domluvit schůzku",
@@ -218,6 +221,9 @@
     "member1Name": "Adam Dalecký",
     "member1Role": "Co-founder & Lead Consultant",
     "member1Bio": "Adam se věnuje práci s firmami na jejich hiring a onboarding procesech pro Gen Z. Osobně prošel desítkami pohovorů a zná tuto generaci zevnitř.",
+    "member2Name": "Jonatan Petr",
+    "member2Role": "Co-founder",
+    "member2Bio": "Součást GenZ Consulting od začátku. Pohled zevnitř generace spojený s citem pro to, jak firmy reálně fungují.",
     "ctaTitle": "Chcete se dozvědět více?",
     "ctaDesc": "Rezervujte si nezávazný call.",
     "cta": "Domluvit schůzku"
@@ -239,11 +245,10 @@
     "cs3Desc": "Analýza kariérní stránky a hiring procesu se zaměřením na komunikaci nabídky práce směrem k Gen Z.",
     "cs3Result": "Identifikovány klíčové bariéry v recruitmentu a navrženy konkrétní úpravy komunikace.",
     "resultLabel": "Výsledek",
-    "viewPdf": "Zobrazit",
-    "downloadPdf": "Stáhnout",
     "ctaTitle": "Chcete podobné výsledky?",
     "ctaDesc": "Domluvte si nezávazný call a zjistíme, jak můžeme pomoci vaší firmě.",
-    "cta": "Domluvit schůzku"
+    "cta": "Domluvit schůzku",
+    "readMore": "Přečíst case study"
   },
   "contact": {
     "eyebrow": "Kontakt",
@@ -263,5 +268,19 @@
     "faq3A": "Záleží na službě — od jednorázového workshopu po 6měsíční budování trainee programu. Vždy navrhneme rozsah, který dává smysl pro vaši situaci.",
     "faq4Q": "Pracujete i s firmami mimo Prahu?",
     "faq4A": "Ano, pracujeme s firmami po celé ČR. Workshopy a setkání lze realizovat prezenčně i online."
+  },
+  "caseStudyDetail": {
+    "back": "Zpět na case studies",
+    "caseLabel": "Case study",
+    "clientLabel": "Klient",
+    "sectionContext": "Kontext & výzva",
+    "sectionApproach": "Náš přístup",
+    "sectionFindings": "Klíčová zjištění",
+    "sectionOutputs": "Výstupy & dopad",
+    "sectionWhy": "Proč GenZ Consulting",
+    "contactLabel": "Kontakt",
+    "ctaTitle": "Chcete podobné výsledky?",
+    "ctaDesc": "Domluvte si nezávazný call a zjistíme, jak můžeme pomoci vaší firmě.",
+    "cta": "Domluvit schůzku"
   }
 }
