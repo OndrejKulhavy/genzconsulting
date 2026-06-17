@@ -112,13 +112,13 @@ export default function CaseStudiesPage() {
                 {/* Card top */}
                 <div className="flex flex-col gap-3 p-7 pb-6">
                   {logo && logoAlt ? (
-                    <div className="mb-1 h-8 flex items-center">
+                    <div className="mb-3">
                       <Image
                         src={logo}
                         alt={logoAlt}
-                        width={120}
-                        height={32}
-                        className="h-8 w-auto object-contain grayscale opacity-60 group-hover:opacity-90 group-hover:grayscale-0 transition-all duration-300"
+                        width={90}
+                        height={24}
+                        className="h-6 w-auto object-contain grayscale opacity-70"
                       />
                     </div>
                   ) : null}

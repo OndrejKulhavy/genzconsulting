@@ -95,14 +95,12 @@ export default function AboutPage() {
               custom={0.15}
               className="relative aspect-[4/3] overflow-hidden"
             >
-              <Image
-                src="/adam_speaking.jpeg"
-                alt="Adam Dalecký speaking at an event"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+              <video
+                src="/linkedin.mp4"
+                controls
+                playsInline
+                className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gtc-deep/10 mix-blend-multiply" />
             </motion.div>
           </div>
         </div>
