@@ -173,6 +173,12 @@ export default function HomePage() {
               className="absolute inset-0 translate-x-4 translate-y-4 rounded-[2.75rem] bg-gtc-primary"
             />
 
+            {/* soft glow/bubble effect extending into white background */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,_rgba(16,185,129,0.18),transparent_45%)] blur-3xl opacity-80"
+            />
+
             {/* framed photo — object-top + square ratio crops the lower legs cleanly */}
             <div className="relative aspect-square overflow-hidden rounded-[2.75rem] border-[3px] border-black bg-gradient-to-b from-gtc-primary/25 to-gtc-primary/60">
               <Image
@@ -188,15 +194,6 @@ export default function HomePage() {
                 aria-hidden
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-gtc-primary/70 to-transparent"
               />
-            </div>
-
-            {/* rotated Gen-Z badge */}
-            <div className="absolute -left-3 -top-3 z-20 flex size-20 rotate-[-12deg] items-center justify-center rounded-full border-[3px] border-black bg-white sm:-left-4 sm:-top-4 sm:size-24">
-              <span className="text-center text-[11px] font-black uppercase leading-tight tracking-tight text-black sm:text-xs">
-                100%
-                <br />
-                Gen&nbsp;Z
-              </span>
             </div>
           </motion.div>
         </div>
