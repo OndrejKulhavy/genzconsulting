@@ -31,12 +31,22 @@ const VideoDialog = () => {
                             <XIcon className="size-5" />
                         </motion.button>
                         <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
-                            <iframe
-                                src={videoUrl}
-                                className="size-full rounded-2xl"
-                                allowFullScreen
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            ></iframe>
+                            {/\.(mp4|webm|ogg)(\?.*)?$/i.test(videoUrl) ? (
+                                <video
+                                    src={videoUrl}
+                                    className="size-full rounded-2xl"
+                                    controls
+                                    autoPlay
+                                    playsInline
+                                />
+                            ) : (
+                                <iframe
+                                    src={videoUrl}
+                                    className="size-full rounded-2xl"
+                                    allowFullScreen
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                />
+                            )}
                         </div>
                     </motion.div>
                 </motion.div>

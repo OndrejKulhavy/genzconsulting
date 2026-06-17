@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'motion/react';
-import { ArrowRight, ArrowDown, Check, Quote, Linkedin } from 'lucide-react';
+import { ArrowRight, ArrowDown, Check, Quote, Linkedin, Download } from 'lucide-react';
 import { CalendlyButton } from '@/components/ui/CalendlyButton';
 import { LeadMagnetModal } from '@/components/ui/LeadMagnetModal';
 import { InfiniteSlider } from '@/components/ui/infinite-slider';
@@ -459,6 +459,82 @@ export default function HomePage() {
               {t('csViewAll')}
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── PDF GUIDE ── */}
+      <section className="bg-[#0c0c0c] py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
+            {/* Left */}
+            <div>
+              <div className="mb-6 flex items-center gap-2.5">
+                <span className="size-1.5 shrink-0 rounded-full bg-gtc-primary" />
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-white/40">
+                  {t('pdfBadge')}
+                </span>
+              </div>
+              <h2 className="text-4xl font-black leading-[1.05] text-white md:text-5xl">
+                {t('pdfHeadline')}
+              </h2>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-white/50">
+                {t('pdfBody')}
+              </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href="/downloads/legit-check.pdf"
+                  download
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gtc-primary px-7 py-3.5 text-sm font-bold text-black transition-opacity hover:opacity-90"
+                >
+                  <Download className="size-4" />
+                  {t('pdfCta')}
+                </a>
+                {calendlyUrl && (
+                  <a
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-bold text-white transition-colors hover:border-white/50 hover:bg-white/5"
+                  >
+                    {t('pdfSecondaryCta')}
+                    <ArrowRight className="size-4" />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Right: PDF cover card */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0.15}
+              className="hidden lg:block"
+            >
+              <div
+                className="relative flex w-[260px] flex-col justify-between overflow-hidden rounded-[1.75rem] bg-white p-8 shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
+                style={{ aspectRatio: '3/4', transform: 'rotate(3deg)' }}
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-black/35">
+                  GZC · GUIDE 01
+                </p>
+                <div>
+                  <h3 className="text-2xl font-black leading-tight text-black">
+                    {t('pdfCoverTitle')}
+                  </h3>
+                  <div className="mt-6 space-y-2">
+                    <div className="h-[3px] w-full rounded-full bg-black" />
+                    <div className="h-[3px] w-2/3 rounded-full bg-gtc-primary" />
+                    <div className="h-[2px] w-2/5 rounded-full bg-black/15" />
+                  </div>
+                  <p className="mt-8 text-[10px] font-bold uppercase tracking-[0.2em] text-black/35">
+                    {t('pdfCoverMeta')}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

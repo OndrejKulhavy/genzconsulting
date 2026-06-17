@@ -133,13 +133,15 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
               {t('clientLabel')}
             </span>
             {cs.logo && (
-              <Image
-                src={cs.logo}
-                alt={cs.logoAlt}
-                width={130}
-                height={32}
-                className="h-7 w-auto object-contain brightness-0 invert opacity-80"
-              />
+              <div className="flex items-center rounded-sm bg-white px-3 py-1.5">
+                <Image
+                  src={cs.logo}
+                  alt={cs.logoAlt}
+                  width={130}
+                  height={32}
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </div>
             )}
           </motion.div>
 
