@@ -34,6 +34,7 @@ export const Footer = () => {
     { href: `/${locale}/about`, label: 'O nás' },
     { href: `/${locale}/case-studies`, label: 'Case studies' },
     { href: `/${locale}/contact`, label: 'Kontakt' },
+    { href: `/${locale}#pdf-guide`, label: 'Průvodce' },
   ];
 
   return (

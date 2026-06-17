@@ -1,10 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { CalendlyButton } from '@/components/ui/CalendlyButton';
-import { LeadMagnetModal } from '@/components/ui/LeadMagnetModal';
 import { useLayout } from '@/components/layout/layout-context';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,8 +52,6 @@ export default function WorkshopPage() {
   const t = useTranslations('genzWorkshop');
   const { globalSettings } = useLayout();
   const calendlyUrl = (globalSettings?.header as any)?.calendlyUrl ?? '';
-  const [leadOpen, setLeadOpen] = useState(false);
-
   const variants = [
     { num: '01', title: t('variant1Title'), desc: t('variant1Desc') },
     { num: '02', title: t('variant2Title'), desc: t('variant2Desc') },
@@ -197,7 +194,6 @@ export default function WorkshopPage() {
         </div>
       </section>
 
-      <LeadMagnetModal isOpen={leadOpen} onClose={() => setLeadOpen(false)} />
     </>
   );
 }

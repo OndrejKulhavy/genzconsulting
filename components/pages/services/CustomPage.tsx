@@ -1,9 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'motion/react';
 import { CalendlyButton } from '@/components/ui/CalendlyButton';
-import { LeadMagnetModal } from '@/components/ui/LeadMagnetModal';
 import { useLayout } from '@/components/layout/layout-context';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,8 +19,6 @@ export default function CustomPage() {
   const t = useTranslations('customSolution');
   const { globalSettings } = useLayout();
   const calendlyUrl = (globalSettings?.header as any)?.calendlyUrl ?? '';
-  const [leadOpen, setLeadOpen] = useState(false);
-
   return (
     <>
       {/* ── HERO ── */}
@@ -185,7 +182,6 @@ export default function CustomPage() {
         </div>
       </section>
 
-      <LeadMagnetModal isOpen={leadOpen} onClose={() => setLeadOpen(false)} />
     </>
   );
 }
