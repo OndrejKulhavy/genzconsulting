@@ -62,15 +62,15 @@ export const Header = () => {
   return (
     <header className="fixed top-0 z-50 w-full bg-black">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="flex h-[72px] items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href={`/${locale}`} aria-label="GenZ Consulting — domů">
             <Image
-              src="/logo.png"
+              src="/logo_dark_bg_v3.png"
               alt="GenZ Consulting"
               width={120}
               height={40}
-              className="h-9 w-auto"
+              className="h-16 w-auto"
               priority
             />
           </Link>
@@ -173,9 +173,9 @@ export const Header = () => {
       {menuOpen && (
         <div className="fixed inset-0 z-40 flex flex-col bg-black lg:hidden">
           {/* Top bar mirrors the header */}
-          <div className="flex h-[72px] items-center justify-between px-6">
+          <div className="flex h-20 items-center justify-between px-6">
             <Link href={`/${locale}`} aria-label="GenZ Consulting — domů" onClick={() => setMenuOpen(false)}>
-              <Image src="/logo.png" alt="GenZ Consulting" width={120} height={40} className="h-9 w-auto" priority />
+              <Image src="/logo.png" alt="GenZ Consulting" width={120} height={40} className="h-16 w-auto" priority />
             </Link>
             <button
               onClick={() => setMenuOpen(false)}

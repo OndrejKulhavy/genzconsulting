@@ -45,11 +45,11 @@ export const Footer = () => {
           <div>
             <Link href={`/${locale}`} aria-label="GenZ Consulting — domů">
               <Image
-                src="/logo.png"
+                src="/logo_dark_bg_v3.png"
                 alt="GenZ Consulting"
                 width={140}
                 height={48}
-                className="h-10 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/50">
