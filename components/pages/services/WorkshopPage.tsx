@@ -113,7 +113,7 @@ export default function WorkshopPage() {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 select-none text-[18vw] font-black leading-none text-black/5"
+          className="pointer-events-none absolute right-12 top-1/2 -translate-y-1/2 select-none text-[18vw] font-black leading-none text-black/5"
         >
           03
         </div>

@@ -157,7 +157,7 @@
   },
   "onboardingApp": {
     "eyebrow": "Service 02",
-    "title": "Onboarding app",
+    "title": "Onboarding\napp",
     "subtitle": "Onboarding that guides new hires through the beginning without chaos — and gives HR an overview of what's happening with each new employee.",
     "whatLabel": "What it is",
     "whatText": "A clear digital onboarding guide built in a tool your company already uses (Notion, Teams, etc.). It gradually releases tasks so new hires aren't overwhelmed, and HR has real-time visibility — where each new hire is, whether they're stuck, and how quickly they're progressing.",
@@ -189,7 +189,7 @@
   },
   "careerPages": {
     "eyebrow": "Service 04",
-    "title": "Career pages for Gen Z",
+    "title": "Career pages\nfor Gen Z",
     "subtitle": "Find out exactly why Gen Z visits your career page but doesn't apply — and get concrete recommendations on what and how to change.",
     "whatLabel": "What it is",
     "whatText": "An expert analysis of your company's career page from Gen Z's perspective. GZC goes through your career page, identifies specific pain points that discourage Gen Z candidates from submitting a CV, and delivers a clear summary of recommendations — with an explanation of why and how to change it.",

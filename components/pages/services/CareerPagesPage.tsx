@@ -71,7 +71,7 @@ export default function CareerPagesPage() {
             initial="hidden"
             animate="visible"
             custom={0.1}
-            className="text-5xl font-black leading-[1.05] tracking-tight text-black sm:text-6xl md:text-7xl"
+            className="text-5xl font-black leading-[1.05] tracking-tight text-black whitespace-pre-line sm:text-6xl md:text-7xl"
           >
             {t('title')}
           </motion.h1>
@@ -106,7 +106,7 @@ export default function CareerPagesPage() {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 select-none text-[18vw] font-black leading-none text-black/5"
+          className="pointer-events-none absolute right-12 top-1/2 -translate-y-1/2 select-none text-[18vw] font-black leading-none text-black/5"
         >
           04
         </div>

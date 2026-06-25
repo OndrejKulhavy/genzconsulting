@@ -157,7 +157,7 @@
   },
   "onboardingApp": {
     "eyebrow": "Služba 02",
-    "title": "Onboardingová aplikace",
+    "title": "Onboardingová\naplikace",
     "subtitle": "Onboarding, který nováčka provede začátkem bez chaosu — a HR dá přehled, co se u každého nováčka děje.",
     "whatLabel": "Co to je",
     "whatText": "Přehledný digitální průvodce onboardingem postavený v nástroji, který firma již používá (Notion, Teams a podobně). Postupně uvolňuje úkoly tak, aby nováček nebyl přehlcený a HR měl přehled v reálném čase — kde se každý nováček nachází, jestli se nezasekl a jak rychle postupuje.",
@@ -189,7 +189,7 @@
   },
   "careerPages": {
     "eyebrow": "Služba 04",
-    "title": "Kariérní stránky pro Gen Z",
+    "title": "Kariérní stránky\npro Gen Z",
     "subtitle": "Zjistěte přesně, proč Gen Z přijde na vaši kariérní stránku a životopis nepošle — a dostanete konkrétní doporučení jak to změnit.",
     "whatLabel": "Co to je",
     "whatText": "Odborná analýza kariérní stránky vaší firmy z pohledu Gen Z. GZC projde vaši kariérní stránku, identifikuje konkrétní pain points, které odrazují Gen Z kandidáty od odeslání životopisu, a dodá přehledný souhrn doporučení — s vysvětlením proč a jak to změnit.",
