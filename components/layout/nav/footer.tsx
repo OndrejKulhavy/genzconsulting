@@ -40,16 +40,16 @@ export const Footer = () => {
   return (
     <footer className="bg-gtc-deep text-white">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-12 md:grid-cols-3 justify-items-center text-center">
           {/* Brand */}
-          <div>
+          <div className="max-w-[260px]">
             <Link href={`/${locale}`} aria-label="GenZ Consulting — domů">
               <Image
                 src="/logo_dark_bg_v3.png"
                 alt="GenZ Consulting"
                 width={140}
                 height={48}
-                className="h-16 w-auto"
+                className="h-16 w-auto mx-auto"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/50">
@@ -59,7 +59,7 @@ export const Footer = () => {
           </div>
 
           {/* Nav */}
-          <div>
+          <div className="max-w-[220px]">
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gtc-primary">
               {t('navLabel')}
             </p>
@@ -78,7 +78,7 @@ export const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="max-w-[260px]">
             <p className="mb-4 text-xs font-bold uppercase tracking-widest text-gtc-primary">
               {t('contactLabel')}
             </p>
@@ -124,7 +124,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-center sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-center gap-2 border-t border-white/10 pt-6 text-center">
           <p className="text-xs text-white/30">
             © {new Date().getFullYear()} {header?.name}. {t('rights')}
           </p>
