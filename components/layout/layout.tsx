@@ -13,7 +13,7 @@ export default async function Layout({ children }: PropsWithChildren) {
   return (
     <LayoutProvider globalSettings={globalData.global} pageData={{}}>
       <Header />
-      <main className="overflow-x-hidden pt-[72px]">{children}</main>
+      <main className="overflow-x-hidden pt-20">{children}</main>
       <Footer />
     </LayoutProvider>
   );
